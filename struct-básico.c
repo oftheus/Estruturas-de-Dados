@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-/* Tipo Estruturado (Struct)
-tipo de dado composto por outros elementos(campos)
-campos são acessados através do '.'*/
-
 struct ponto2d{
     float x;
     float y;
@@ -16,20 +12,141 @@ int main()
     scanf("%f%f",&p.x,&p.y);
     printf("O ponto fornecido foi: (%.2f,%.2f)",p.x,p.y);
     
-    /*Ponteiros para Estruturas
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
     
-    struct ponto2d *pp;
-    pp->x = 12.0;
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct cadastro{
+    char letra;
+    int idade;
+}Tcadastro;
+
+
+int main()
+{
+    Tcadastro meuCadastro;
+    meuCadastro.letra = 'M';
+    meuCadastro.idade = 21;
+    printf("Nome: %c\n", meuCadastro.letra);
+    printf("Idade: %d\n",meuCadastro.idade);
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
     
-    Alocação Dinâmica de Estruturas
-    struct ponto2d* p;
-    p = (strict ponto2d*) malloc (sizeof(struct ponto2d));
-    p-> 12.0;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct cadastro{
+    char nome[30];
+    int idade;
+}Tcadastro;
+
+
+int main()
+{
+    Tcadastro meuCadastro;
+    strcpy(meuCadastro.nome,"Matheus Gonçalves");
+    meuCadastro.idade = 21;
+    printf("Nome: %s\n", meuCadastro.nome);
+    printf("Idade: %d\n",meuCadastro.idade);
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
     
-    typedef struct ponto2d {
-        float x;
-        float y;
-    }TPonto2d; */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct cadastro{
+    char nome[30];
+    int idade;
+}Tcadastro;
+
+
+int main()
+{
+    Tcadastro *meuCadastro;
+    meuCadastro = (Tcadastro*)malloc(sizeof(Tcadastro));
+    
+    strcpy(meuCadastro->nome,"Matheus Gonçalves Silva");
+    meuCadastro->idade = 21;
+    
+    printf("Nome: %s\n", meuCadastro->nome);
+    printf("Idade: %d\n",meuCadastro->idade);
+    
+    free(meuCadastro);
     
     return 0;
 }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct cadastro{
+    float *notas;
+}Tcadastro;
+
+int main()
+{
+    int qtd;
+    scanf("%d",&qtd);
+    Tcadastro alunoUm;
+    alunoUm.notas = malloc(sizeof(float) * qtd);
+    
+    for (int i=0;i<qtd;i++){
+        float n;
+        scanf("%f",&n);
+        alunoUm.notas[i]=n;
+    }
+    
+    for (int k=0;k<qtd;k++)
+        printf("Materia [%d] = %.2f\n",k,alunoUm.notas[k]);
+    
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+    
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct cadastro{
+    char nome[30];
+    int idade;
+    float notas[3];
+}Tcadastro;
+
+int main()
+{
+    Tcadastro *usuario;
+    usuario = (Tcadastro*) malloc(sizeof(Tcadastro));
+    
+    strcpy(usuario->nome,"Matheus Goncalves");
+    printf("Nome: %s\n", usuario->nome);
+    
+    usuario->idade=21;
+    printf("Idade: %d\n", usuario->idade);
+    
+    for (int i=0;i<3;i++){
+        float grades;
+        scanf("%f",&grades);
+        usuario->notas[i] = grades;
+    }
+    
+    for (int j=0;j<3;j++){
+        printf("%.2f ", usuario->notas[j]);
+    }
+    
+    return 0;
+}
+
