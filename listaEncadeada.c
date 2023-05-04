@@ -33,6 +33,53 @@ void inserirNo(TLista *l){
         }
         aux->prox = novoNo;
     }
+    
+/*
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+typedef struct lista {
+    int info;
+    struct lista* prox;
+} TLista;
+
+
+void imprime_lista(TLista *li) {
+    TLista* p;
+    for (p = li; p != NULL; p = p->prox)
+        printf("%d ", p->info);
+}
+
+TLista* insere_fim (TLista* li, int i) {
+    TLista* novo = (TLista*) malloc(sizeof(TLista));
+    novo->info = i;
+    novo->prox = NULL;
+    TLista* p = li;
+    TLista* aux = li;
+    
+    while (p != NULL) {
+        aux = p;
+        p = p->prox;
+    }
+    if (aux != NULL)
+        aux->prox = novo;
+    else
+        li = novo;
+    return li;
+    
+}
+
+int main (void) {
+    TLista* lista = NULL;
+    lista = insere_fim(lista, 5);
+    lista = insere_fim(lista, 10);
+    imprime_lista(lista);
+}
+
+*/
+        
+        
 }
 
 //Função para imprimir a lista
